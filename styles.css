@@ -248,12 +248,18 @@ p {
 
 /* Grid Statistik */
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    display: grid; /* Enables CSS Grid layout */
+    grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
+    gap: 20px; /* Adds space between grid items (stat cards) */
+    /* You can adjust the gap value as needed */
 }
 
+/* Optional: For responsiveness on smaller screens */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr; /* Stacks cards in a single column on small screens */
+    }
+}
 .stat-card {
     background-color: white;
     border-radius: 10px;
