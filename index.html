@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard WebGIS Pemilu</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js untuk visualisasi data -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts untuk font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link ke file CSS eksternal -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Sistem Informasi Pemilu Provinsi Yogyakarta Pemilu</div>
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <ul class="menu">
+            <li><a href="https://ariiajaa.github.io/Pemilu_Yogya/">Home</a></li>
+            <li><a href="https://ariiajaa.github.io/visual_jogja/">Visualisasi</a></li>
+            <li><a href="https://ariiajaa.github.io/petaupdatee/">Map Penuh</a></li>
+            <li><a href="https://instagram.com/aridwp_">Kontak</a></li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        <section id="home" class="content-section active">
+            <div class="hero">
+                <h1>PEMILU PROVINSI YOGYAKARTA </h1>
+                <p>Pantau perkembangan hasil pemilihan umum secara real-time dengan visualisasi interaktif dan data terupdate.</p>
+                <div>
+                    <a href="https://ariiajaa.github.io/visual_jogja/" class="btn">Lihat Visualisasi</a>
+                    <a href="https://ariiajaa.github.io/petaupdatee/" class="btn btn-outline">Eksplor Peta</a>
+                </div>
+            </div>
+        </section>
+            
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-value">2.870.974</div>
+                <div class="stat-label">Partisipasi Pemilih</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-value">11.932</div>
+                <div class="stat-label">TPS Terlapor</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Data Terupdate</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="stat-value">496</div>
+                <div class="stat-label">Hari Setelah Pemilu</div>
+            </div>
+        </div>
+            
+       
+                <h2 class="card-title">Perolehan Suara Tahun 2024</h2>
+            </div>
+            <div class="party-progress-container">
+            </div>
+            <div class="chart-container">
+                <canvas id="homeChart2024"></canvas>
+            </div>
+        </div>
+
+        
+                <h2 class="card-title">Perolehan Suara Tahun 2019</h2>
+            </div>
+            <div class="party-progress-container">
+            </div>
+            <div class="chart-container">
+                <canvas id="homeChart2019"></canvas>
+            </div>
+        </div>
+     
+
+    </div>
+</section>
+    </main>
+    
+    <!-- Bagian Footer yang Dihilangkan untuk Sesuai Permintaan -->
+    <!-- Jika Anda ingin menambahkannya kembali, silakan beritahu saya. -->
+    
+    <!-- Script utama JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

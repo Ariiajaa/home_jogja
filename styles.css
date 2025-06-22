@@ -1,0 +1,490 @@
+/* Variabel Warna */
+:root {
+    --primary: #B71C1C; /* Merah Marun/Merah Tua */
+    --secondary: #7c0000; /* Merah sedikit lebih cerah untuk navbar dan teks utama */
+    --accent: #FFCDD2; /* Merah muda sebagai aksen ringan */
+    --light: #F8F8F8; /* Warna latar belakang yang lebih terang */
+    --dark: #263238; /* Biru gelap keabu-abuan untuk kontras */
+    --success: #4CAF50;
+    --warning: #FFC107;
+    --danger: #F44336;
+    --gray: #9E9E9E;
+}
+
+/* Reset CSS dasar dan pengaturan font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--light); /* Menggunakan warna terang yang baru */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--secondary); /* Menggunakan merah yang sedikit lebih cerah */
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.0rem;
+    font-weight: 400;
+    color: white;
+}
+
+.navbar .menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar .menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.3s;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.navbar .menu li a:hover {
+    color: var(--accent); /* Aksen merah muda untuk hover */
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* Container utama untuk konten halaman */
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Bagian Konten Umum */
+.content-section {
+    padding: 0;
+    min-height: 80vh;
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.content-section.active {
+    display: block;
+}
+
+h1, h2, h3 {
+    margin-bottom: 1.5rem;
+    color: var(--secondary); /* Tetap menggunakan merah yang lebih cerah */
+}
+
+h1 {
+    font-size: 3.0rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.hero {
+    /* Perubahan utama di sini: Mengurangi opacity pada gradien */
+    background: linear-gradient(135deg, rgba(124,0,0,0.5), rgba(183,28,28,0.5)), /* Opacity diubah dari 0.8 menjadi 0.5 */
+                url('gambar_pemilu.jpg'); /* Your image as background */
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    color: white;
+    padding: 4rem 0;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    color: rgba(255,255,255,0.9);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #880E4F; /* Merah yang lebih gelap untuk hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid white;
+    margin-left: 1rem;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--primary);
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+/* Wadah Chart */
+.chart-container {
+    position: relative;
+    height: 500px;
+    width: 100%;
+}
+
+/* Pastikan elemen canvas mengisi wadah chart */
+#voteChart, #pieChart, #homeChart, #regionalChart, #trendChart, #performanceChart, #topRegionsChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Wadah Peta */
+.map-container {
+    height: 600px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.map-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+}
+
+.map-placeholder i {
+    font-size: 5rem;
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+/* Grid Statistik */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--gray);
+    font-size: 1rem;
+}
+
+/* Progress Bar Partai */
+.party-progress {
+    margin-bottom: 1.5rem;
+}
+
+.party-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.party-name {
+    font-weight: 500;
+}
+
+.party-percentage {
+    font-weight: 600;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* Formulir Kontrol (Select) */
+.form-control {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Toggle Switch */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.toggle-label {
+    margin-right: 1rem;
+    font-weight: 500;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--dark);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+    font-weight: normal;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .navbar .logo {
+        font-size: 1.2rem;
+    }
+
+    .navbar .menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background-color: var(--secondary);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        transition: left 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .navbar .menu.active {
+        left: 0;
+    }
+
+    .navbar .menu li {
+        margin: 1rem 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero {
+        padding: 3rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 2rem 0;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .chart-container {
+        height: 300px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
