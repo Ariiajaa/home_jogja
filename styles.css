@@ -5,9 +5,9 @@
     --accent: #FFCDD2; /* Merah muda sebagai aksen ringan */
     --light: #F8F8F8; /* Warna latar belakang yang lebih terang */
     --dark: #263238; /* Biru gelap keabu-abuan untuk kontras */
-    --success: #4CAF50;
-    --warning: #FFC107;
-    --danger: #F44336;
+    --success: #4CAF50; /* Ini bisa dipertahankan karena bisa digunakan untuk pesan sukses di masa depan */
+    --warning: #FFC107; /* Ini bisa dipertahankan karena bisa digunakan untuk pesan peringatan di masa depan */
+    --danger: #F44336; /* Ini bisa dipertahankan karena bisa digunakan untuk pesan error di masa depan */
     --gray: #9E9E9E;
 }
 
@@ -80,25 +80,20 @@ body {
 }
 
 /* Bagian Konten Umum */
+/* content-section tidak lagi digunakan untuk switching, hanya sebagai penampung 'home' */
 .content-section {
     padding: 0;
-    min-height: 80vh;
-    display: none;
-    animation: fadeIn 0.5s ease;
+    min-height: 80vh; /* Pertahankan ini agar hero section punya tinggi minimal */
+    /* display: none; -> Ini dihapus karena #home sudah active by default dan selalu tampil */
+    animation: fadeIn 0.5s ease; /* Animation tetap relevan jika ingin fade-in saat pertama kali dimuat */
 }
 #home {
-    /* Add this line to remove or reduce the bottom margin */
-    margin-bottom: 0; /* Or try a small negative value like -20px if 0 isn't enough */
+    margin-bottom: 0; /* Atau try a small negative value like -20px if 0 isn't enough */
 }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-
-.content-section.active {
-    display: block;
 }
 
 h1, h2, h3 {
@@ -127,12 +122,11 @@ p {
 }
 
 .hero {
-    /* Perubahan utama di sini: Mengurangi opacity pada gradien */
-    background: linear-gradient(135deg, rgba(124,0,0,0.5), rgba(183,28,28,0.5)), /* Opacity diubah dari 0.8 menjadi 0.5 */
+    background: linear-gradient(135deg, rgba(124,0,0,0.5), rgba(183,28,28,0.5)),
                 url('gambar_pemilu.jpg'); /* Your image as background */
-    background-size: cover; /* Ensures the image covers the entire area */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     padding: 4rem 0;
     border-radius: 10px;
@@ -184,6 +178,10 @@ p {
     color: var(--primary);
 }
 
+/* Kartu umumnya tidak terpakai secara langsung di HTML yang diberikan,
+   namun struktur .card, .card-header, .card-title sering digunakan
+   untuk menata chart atau konten serupa, jadi saya biarkan.
+   Jika tidak ada elemen dengan class 'card' di HTML, ini bisa dihapus. */
 .card {
     background-color: white;
     border-radius: 10px;
@@ -211,7 +209,8 @@ p {
     color: var(--secondary);
 }
 
-/* Wadah Chart */
+
+/* Wadah Chart (pertahankan karena digunakan oleh canvas) */
 .chart-container {
     position: relative;
     height: 500px;
@@ -219,51 +218,25 @@ p {
 }
 
 /* Pastikan elemen canvas mengisi wadah chart */
-#voteChart, #pieChart, #homeChart, #regionalChart, #trendChart, #performanceChart, #topRegionsChart {
+/* Hanya pertahankan ID yang ada di HTML Anda */
+#homeChart2024, #homeChart2019 { /* Hanya dua ID ini yang ada di HTML Anda */
     width: 100% !important;
     height: 100% !important;
 }
 
-/* Wadah Peta */
-.map-container {
-    height: 600px;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-}
-
-.map-placeholder {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    color: #555;
-}
-
-.map-placeholder i {
-    font-size: 5rem;
-    color: var(--gray);
-    margin-bottom: 1rem;
-}
-
-/* Grid Statistik */
+/* Grid Statistik (tetap relevan) */
 .stats-grid {
-    display: grid; /* Enables CSS Grid layout */
-    grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
-    gap: 20px; /* Adds space between grid items (stat cards) */
-    /* You can adjust the gap value as needed */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-/* Optional: For responsiveness on smaller screens */
 @media (max-width: 768px) {
     .stats-grid {
-        grid-template-columns: 1fr; /* Stacks cards in a single column on small screens */
+        grid-template-columns: 1fr;
     }
 }
+
 .stat-card {
     background-color: white;
     border-radius: 10px;
@@ -295,7 +268,7 @@ p {
     font-size: 1rem;
 }
 
-/* Progress Bar Partai */
+/* Progress Bar Partai (tetap relevan karena di-generate via JS) */
 .party-progress {
     margin-bottom: 1.5rem;
 }
@@ -326,109 +299,7 @@ p {
     border-radius: 5px;
 }
 
-/* Formulir Kontrol (Select) */
-.form-control {
-    padding: 0.5rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
-/* Toggle Switch */
-.toggle-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-.toggle-label {
-    margin-right: 1rem;
-    font-weight: 500;
-}
-
-.toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 30px;
-}
-
-.toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 22px;
-    width: 22px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: var(--primary);
-}
-
-input:checked + .slider:before {
-    transform: translateX(30px);
-}
-
-/* Tooltip */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 200px;
-    background-color: var(--dark);
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 0.5rem;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.9rem;
-    font-weight: normal;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Responsive Design */
+/* Responsive Design (tetap relevan) */
 @media (max-width: 992px) {
     .navbar .logo {
         font-size: 1.2rem;
