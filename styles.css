@@ -5,13 +5,12 @@
     --accent: #FFCDD2; /* Merah muda sebagai aksen ringan */
     --light: #F8F8F8; /* Warna latar belakang yang lebih terang */
     --dark: #263238; /* Biru gelap keabu-abuan untuk kontras */
-    --success: #4CAF50; /* Ini bisa dipertahankan karena bisa digunakan untuk pesan sukses di masa depan */
-    --warning: #FFC107; /* Ini bisa dipertahankan karena bisa digunakan untuk pesan peringatan di masa depan */
-    --danger: #F44336; /* Ini bisa dipertahankan karena bisa digunakan untuk pesan error di masa depan */
+    --success: #4CAF50;
+    --warning: #FFC107;
+    --danger: #F44336;
     --gray: #9E9E9E;
 }
 
-/* Reset CSS dasar dan pengaturan font */
 * {
     margin: 0;
     padding: 0;
@@ -20,14 +19,14 @@
 }
 
 body {
-    background-color: var(--light); /* Menggunakan warna terang yang baru */
+    background-color: var(--light);
     color: #333;
     line-height: 1.6;
 }
 
 /* Navbar */
 .navbar {
-    background-color: var(--secondary); /* Menggunakan merah yang sedikit lebih cerah */
+    background-color: var(--secondary);
     color: white;
     padding: 1rem 2rem;
     display: flex;
@@ -61,7 +60,7 @@ body {
 }
 
 .navbar .menu li a:hover {
-    color: var(--accent); /* Aksen merah muda untuk hover */
+    color: var(--accent);
 }
 
 .menu-toggle {
@@ -80,15 +79,12 @@ body {
 }
 
 /* Bagian Konten Umum */
-/* content-section tidak lagi digunakan untuk switching, hanya sebagai penampung 'home' */
 .content-section {
     padding: 0;
-    min-height: 80vh; /* Pertahankan ini agar hero section punya tinggi minimal */
-    /* display: none; -> Ini dihapus karena #home sudah active by default dan selalu tampil */
-    animation: fadeIn 0.5s ease; /* Animation tetap relevan jika ingin fade-in saat pertama kali dimuat */
+    animation: fadeIn 0.5s ease;
 }
 #home {
-    margin-bottom: 0; /* Atau try a small negative value like -20px if 0 isn't enough */
+    margin-bottom: 0;
 }
 
 @keyframes fadeIn {
@@ -98,7 +94,7 @@ body {
 
 h1, h2, h3 {
     margin-bottom: 1.5rem;
-    color: var(--secondary); /* Tetap menggunakan merah yang lebih cerah */
+    color: var(--secondary);
 }
 
 h1 {
@@ -123,7 +119,7 @@ p {
 
 .hero {
     background: linear-gradient(135deg, rgba(124,0,0,0.5), rgba(183,28,28,0.5)),
-                url('gambar_pemilu.jpg'); /* Your image as background */
+                url('gambar_pemilu.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -162,7 +158,7 @@ p {
 }
 
 .btn:hover {
-    background-color: #880E4F; /* Merah yang lebih gelap untuk hover */
+    background-color: #880E4F;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
@@ -178,10 +174,6 @@ p {
     color: var(--primary);
 }
 
-/* Kartu umumnya tidak terpakai secara langsung di HTML yang diberikan,
-   namun struktur .card, .card-header, .card-title sering digunakan
-   untuk menata chart atau konten serupa, jadi saya biarkan.
-   Jika tidak ada elemen dengan class 'card' di HTML, ini bisa dihapus. */
 .card {
     background-color: white;
     border-radius: 10px;
@@ -209,22 +201,17 @@ p {
     color: var(--secondary);
 }
 
-
-/* Wadah Chart (pertahankan karena digunakan oleh canvas) */
 .chart-container {
     position: relative;
     height: 500px;
     width: 100%;
 }
 
-/* Pastikan elemen canvas mengisi wadah chart */
-/* Hanya pertahankan ID yang ada di HTML Anda */
-#homeChart2024, #homeChart2019 { /* Hanya dua ID ini yang ada di HTML Anda */
+#homeChart2024, #homeChart2019 {
     width: 100% !important;
     height: 100% !important;
 }
 
-/* Grid Statistik (tetap relevan) */
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -268,7 +255,6 @@ p {
     font-size: 1rem;
 }
 
-/* Progress Bar Partai (tetap relevan karena di-generate via JS) */
 .party-progress {
     margin-bottom: 1.5rem;
 }
@@ -299,7 +285,7 @@ p {
     border-radius: 5px;
 }
 
-/* Responsive Design (tetap relevan) */
+/* Responsive Design */
 @media (max-width: 992px) {
     .navbar .logo {
         font-size: 1.2rem;
@@ -359,13 +345,28 @@ p {
 
     .card {
         padding: 1rem;
+        margin-bottom: 1rem; 
+    }
+
+    /* Jika "Pemilu Provinsi Yogyakarta" adalah H2 atau H1, sesuaikan margin bawahnya */
+    h2 { 
+        margin-bottom: 1rem;
+    }
+
+    /* Pastikan tidak ada margin-top berlebihan pada elemen setelah judul */
+    .stats-grid {
+        margin-top: 1.5rem; 
+        grid-template-columns: 1fr;
+        gap: 15px; /
+    }
+
+    .content-section {
+        min-height: auto; 
     }
 
     .chart-container {
         height: 300px;
+        margin-bottom: 1.5rem;
     }
 
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
 }
